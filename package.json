@@ -1,0 +1,29 @@
+{
+  "name": "swagger-to-pdf",
+  "version": "1.1.0",
+  "description": "Dump swagger json spec into pdf document.",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npm i -g http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "swagger2pdf": "./bin/swagger2pdf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antony-marion/swagger-to-pdf.git"
+  },
+  "maintainers": [
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antony-marion/swagger-to-pdf/issues"
+  },
+  "homepage": "https://github.com/antony-marion/swagger-to-pdf#readme",
+  "dependencies": {
+    "argparse": "^1.0.7",
+    "electron-prebuilt": "^0.37.7",
+    "yaml-js": "^0.1.3"
+  }
+}

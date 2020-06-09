@@ -1,0 +1,283 @@
+info: {title: CartoOnline, version: 1.0.0, description: API}
+swagger: '2.0'
+paths:
+  /shareStudy:
+    post:
+      description: API used to share a study given by its guid with a set of username
+      tags: [share]
+      produces: [application/json]
+      parameters:
+      - {name: studyGuid, in: query, description: a study guid, required: true, type: string}
+      - name: body
+        in: query
+        description: Array of emails of user
+        required: true
+        type: array
+        items: {type: string}
+      responses:
+        '200': {description: guid}
+  /shareMaterialsLibrary:
+    post:
+      description: API used to share a MaterialsLibrary/ given by its guid with a
+        set of username
+      tags: [share]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - name: body
+        in: query
+        description: Array of emails of user
+        required: true
+        type: array
+        items: {type: string}
+      responses:
+        '200': {description: guid}
+  /shareDetectorsLibrary:
+    post:
+      description: API used to share a DetectorsLibrary/ given by its guid with a
+        set of username
+      tags: [share]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - name: body
+        in: query
+        description: Array of emails of user
+        required: true
+        type: array
+        items: {type: string}
+      responses:
+        '200': {description: guid}
+  /shareGeometriesLibrary:
+    post:
+      description: API used to share a GeometriesLibrary/ given by its guid with a
+        set of username
+      tags: [share]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - name: body
+        in: query
+        description: Array of emails of user
+        required: true
+        type: array
+        items: {type: string}
+      responses:
+        '200': {description: guid}
+  /shareSpectraLibrary:
+    post:
+      description: API used to share a SpectraLibrary/ given by its guid with a set
+        of username
+      tags: [share]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - name: body
+        in: query
+        description: Array of emails of user
+        required: true
+        type: array
+        items: {type: string}
+      responses:
+        '200': {description: guid}
+  /study:
+    get:
+      description: API used to retrieve a result file (.xls,.rnom,.fst etc ...) after
+        study has been calculated
+      tags: [results]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - {name: resultFileName, in: query, description: result FileName extension,
+        required: true, type: string}
+      responses:
+        '200': {description: results}
+  /studyIso:
+    get:
+      description: API used to retrieve a 2D ISO data file used for displaying in
+        karto3D
+      tags: [results]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - {name: resultFileName, in: query, description: result FileName extension,
+        required: true, type: string}
+      - {name: zIdx, in: query, description: result FileName extension, required: true,
+        type: integer}
+      responses:
+        '200': {description: results}
+  /studyIsoZip:
+    get:
+      description: API used to retrieve a 2D ISO Zip in karto3D
+      tags: [results]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - {name: resultFileName, in: query, description: result FileName extension,
+        required: true, type: string}
+      responses:
+        '200': {description: results}
+  /getNRRD:
+    get:
+      description: API used to retrieve a NRRD file
+      tags: [results]
+      produces: [application/json]
+      parameters:
+      - {name: filenameNRRD, in: query, description: a guid, required: true, type: string}
+      responses:
+        '200': {description: results}
+  /studies:
+    get:
+      description: API to save a study content to the database and git repository.
+      tags: [Studies]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a study guid, required: true, type: string}
+      responses:
+        '200': {description: StudyDocument}
+  /friendsEmail:
+    get:
+      description: API used to retrieve the list of emails matching users that share
+        at least one study with the current user
+      tags: [share]
+      produces: [application/json]
+      responses:
+        '200': {description: results}
+  /usersgroupsName:
+    get:
+      description: API used to retrieve the list of user groups that are used to share
+        documents between users
+      tags: [share]
+      produces: [application/json]
+      responses:
+        '200': {description: results}
+  /itemInfo:
+    get:
+      description: given a guid, returns the study info (sharedWithUsers, mtime, ...)
+      tags: [Infos]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      - {name: itemType, in: query, description: item Type, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: results}
+  /cloneMaterialsLibrary:
+    post:
+      description: clone a MaterialsLibrary given by its guid and return the guid
+      tags: [Clone]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: DocumentGuid}
+  /cloneDetectorsLibrary:
+    post:
+      description: clone a DetectorsLibrary given by its guid
+      tags: [Clone]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: DocumentGuid}
+  /clonSpectraLibrary:
+    post:
+      description: clone a SpectraLibrary given by its guid
+      tags: [Clone]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: DocumentGuid}
+  /cloneGeometriesLibrary:
+    post:
+      description: clone a Geometriesibrary given by its guid
+      tags: [Clone]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: DocumentGuid}
+  /cloneStudyLibrary:
+    post:
+      description: clone a study given by its guid and return the guid of the cloned
+        study
+      tags: [Clone]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: DocumentGuid}
+  /studies/launcher:
+    post:
+      description: execute the launcher on the given GUID
+      tags: [Launcher]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: Object with outputString and guid}
+  /studies/convergenceWithoutMail:
+    post:
+      description: execute the convergence method on the given GUID
+      tags: [Convergence]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: Object with validSolution}
+  /studies/convergenceWithMail:
+    post:
+      description: execute the convergence method on the given GUID and send result
+        on users' email
+      tags: [Convergence]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: returns 200 on success}
+  /studies/batchWithMail:
+    post:
+      description: Route to compute range values on a given parameter and get the
+        file by Mail instead of waiting for the result. send mail
+      tags: [Batch]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: returns 200 on success}
+  /studies/batch:
+    post:
+      description: Route to compute range values on a given parameter and get the
+        file by Mail instead of waiting for the result.
+      tags: [Batch]
+      parameters:
+      - {name: guid, in: query, description: a guid, required: true, type: string}
+      produces: [application/json]
+      responses:
+        '200': {description: returns 200 on success}
+  /batchExcelsGuid:
+    get:
+      description: get the temporary Calculation guid from last batch computation
+        given
+      tags: [Batch]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a study guid, required: true, type: string}
+      responses:
+        '200':
+          description: tempoGuid
+          schema: {type: object}
+  /isAuthorizedToSave:
+    get:
+      description: get the authorization before save on study or Library
+      tags: [Infos]
+      produces: [application/json]
+      parameters:
+      - {name: guid, in: query, description: a study guid, required: true, type: string}
+      responses:
+        '200': {description: on sucess => 200}
+definitions: {}
+responses: {}
+parameters: {}
+securityDefinitions: {}
+tags: []

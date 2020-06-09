@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antony-marion/swagger-to-pdf.git"
+    "url": "git+https://github.com/antonymarion/swagger-to-pdf.git"
   },
   "maintainers": [
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/antony-marion/swagger-to-pdf/issues"
+    "url": "https://github.com/antonymarion/swagger-to-pdf/issues"
   },
-  "homepage": "https://github.com/antony-marion/swagger-to-pdf#readme",
+  "homepage": "https://github.com/antonymarion/swagger-to-pdf#readme",
   "dependencies": {
     "argparse": "^1.0.7",
     "electron-prebuilt": "^0.37.7",
